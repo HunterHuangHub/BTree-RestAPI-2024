@@ -1,3 +1,8 @@
+package com.example.btree;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BTree<E extends Comparable<E>> implements AbstractBTree<E> {
 
     //Rules for a B tree:
@@ -17,6 +22,32 @@ public class BTree<E extends Comparable<E>> implements AbstractBTree<E> {
     @Override
     public NodeIndexPair<E> contains(E element) {
         return contains(root, element);
+    }
+
+    public List<E> getElements() {
+        List<E> elements = new ArrayList<>();
+        collectElements(root, elements);
+        return elements;
+    }
+
+    private void collectElements(Node<E> node, List<E> elements) {
+        int i = 0;
+
+        // Traverse the current node's elements and children
+        while (i < node.getElements().size()) {
+            // Traverse the left child before the element
+            if (!node.isLeaf()) {
+                collectElements(node.getChildren().get(i), elements);
+            }
+            // Add the current element
+            elements.add(node.getElements().get(i));
+            i++;
+        }
+
+        // Traverse the rightmost child
+        if (!node.isLeaf()) {
+            collectElements(node.getChildren().get(i), elements);
+        }
     }
 
     public NodeIndexPair<E> contains(Node<E> node, E element) {
@@ -126,6 +157,18 @@ public class BTree<E extends Comparable<E>> implements AbstractBTree<E> {
         }
         return right;
     }
+
+    public List<E> getRange(E start, E end) {
+        List<E> elements = getElements(); // Use the `getElements` method you implemented earlier
+        List<E> range = new ArrayList<>();
+        for (E element : elements) {
+            if (element.compareTo(start) >= 0 && element.compareTo(end) <= 0) {
+                range.add(element);
+            }
+        }
+        return range;
+    }
+
 
     @Override
     public String toString() {

@@ -1,7 +1,9 @@
 # B-Tree Implementation in Java
 
 ## Overview
-This project implements a generic B-Tree data structure in Java, providing an efficient way to store and retrieve data that maintains sorted order. It includes a custom node implementation and supports generic data types that extend `Comparable`.
+This project started as a standalone implementation of a generic B-Tree data structure in Java, designed for efficient storage and retrieval of sorted data. The B-Tree supports generic data types that extend `Comparable` and includes features like dynamic node splitting and searching.
+
+In 2024, the project was expanded into a Spring Boot REST API, enabling users to interact with the B-Tree via HTTP endpoints. The API allows operations such as creating B-Trees, adding elements, checking for element existence, and retrieving the tree structure in a JSON format. This back-end development extension demonstrates the integration of data structures with modern web service frameworks.
 
 ## Components
 - **AbstractBTree**: A public interface defining the basic operations of a B-Tree.
@@ -33,9 +35,15 @@ The project uses JUnit for testing. To run tests:
     java -jar .\lib\junit-platform-console-standalone-1.11.3.jar --class-path .\bin --scan-classpath
 
 ## 2024 Updates
-Added comprehensive test cases to cover new functionality and ensure robustness.
-Revamped certain implementations to improve efficiency and maintainability.
-Updated documentation to reflect the latest changes and usage instructions.
-Contributions
+- Implemented a server-side REST API using Spring Boot to enable interaction with the B-Tree data structure via HTTP.
+    1. GET endpoints to retrieve B-Tree structure and check for element existence.
+    2. POST endpoints to create new B-Trees and add elements.
+- Added new test cases for the REST API functionality, now located in `src/test/java/com/example/btree`.
+- Legacy tests for the standalone B-Tree implementation remain in the original `Test` folder for reference.
+- Revamped documentation to reflect the new API endpoints, usage instructions, and project structure.
+- Improved maintainability by reorganizing the codebase to align with Spring Boot's standard directory structure.
+
+# Note on Test Folder Structure:
+Due to the updated REST API implementation with Spring Boot, the original Test folder still contains the legacy tests designed for the initial B-Tree implementation. However, the new tests for the Spring Boot REST API are now located in src/main/java/com/example/btree, alongside the REST API and B-Tree implementation. This change reflects the transition from a standalone B-Tree implementation to a full-fledged API-based structure.
 
 # Contributions are welcome. Please fork the repository, make your changes, and submit a pull request.
