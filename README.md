@@ -30,9 +30,13 @@ To set up and compile the project:
 The project uses JUnit for testing. To run tests:
 
 1. Compile the test files (ensure JUnit jar is in the lib directory):
+```bash
     javac -d bin -cp ".\lib\junit-platform-console-standalone-1.11.3.jar;.\bin" -sourcepath test test\*.java
+```
 2. Execute the tests:
+```bash
     java -jar .\lib\junit-platform-console-standalone-1.11.3.jar --class-path .\bin --scan-classpath
+```
 
 ## 2024 Updates
 - Implemented a server-side REST API using Spring Boot to enable interaction with the B-Tree data structure via HTTP.
