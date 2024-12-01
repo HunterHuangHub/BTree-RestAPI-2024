@@ -22,9 +22,9 @@ To set up and compile the project:
 1. Ensure Java is installed on your system.
 2. Download or clone the repository to your local machine.
 3. Navigate to the project directory and compile the source files:
-   ```bash
+```bash
    javac -d bin -cp ".\lib\junit-platform-console-standalone-1.11.3.jar" -sourcepath src src\*.java
-
+```
 
 ## Running Tests
 The project uses JUnit for testing. To run tests:
